@@ -2,4 +2,39 @@
 
 {% block content %}
     <h1>ADDRESS BOOK</h1>
+    {% if address_list %}
+            <hr/>
+    {% endif %}
+    <body>
+        <div class="container">
+            <div class="row">
+              
+                <!-- Content here -->
+            
+            {% if address_list %}
+                {% for address in address_list %}
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                    <!--   <img src="..." class="card-img-top" alt="..."> -->
+                        <div class="card-body">
+                        <h5 class="card-title">{{address.name}}</h5>
+                        <p class="card-text">
+                            {{address.name}}</br>
+                            {{address.email}}</br>
+                            {{address.phone}}</br>
+                            {{address.address}}</br>
+                            {{address.city}}</br>
+                            {{address.state}}</br>
+                            {{address.zipcode}}</br>
+                        </p>
+                        <a href="{% url 'edit_address' address.id %}" class="btn btn-secondary">Edit</a>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    </body>
 {% endblock  %}
